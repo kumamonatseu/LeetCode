@@ -1,0 +1,18 @@
+class Solution(object):
+    def detectCapitalUse(self, word):
+        """
+        :type word: str
+        :rtype: bool
+        """
+        flag = []
+        for char in word:
+            if ord(char) < 65 or ord(char) > 90:
+                flag.append(False)
+            else:
+                flag.append(True)
+        if flag.count(False) == 0 or flag.count(True) == 0:
+            return True
+        elif flag[0] == True and flag.count(True) == 1:
+            return True
+        else: 
+            return False
