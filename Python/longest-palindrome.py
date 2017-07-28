@@ -40,3 +40,23 @@ class Solution(object):
         """
         odd = sum(map(lambda x: x & 1, collections.Counter(s).values()))
         return len(s) - odd + int(odd > 0)
+
+###    
+    from collections import Counter
+    def longestPalindrome3(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        if s == []:
+            return 0
+        judgement_count = 0
+        odd = 0
+        a = sorted(Counter(s).items(), key=lambda a:a[1], reverse=True)
+        for i in xrange(len(a)):
+            if a[i][1] %2 == 0:
+                judgement_count += a[i][1]
+            else:
+                judgement_count += a[i][1] - 1
+                odd = 1
+        return judgement_count + odd
