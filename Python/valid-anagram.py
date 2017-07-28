@@ -46,3 +46,10 @@ class Solution2:
     # @return {boolean}
     def isAnagram(self, s, t):
         return sorted(s) == sorted(t)
+
+# Use of collections.Counter
+from collections import Counter
+class Solution3:
+    
+    def isAnagram(self, s, t):
+        return Counter(s)==Counter(t)
