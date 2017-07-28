@@ -1,0 +1,23 @@
+class Solution(object):
+    def findRestaurant(self, list1, list2):
+        """
+        :type list1: List[str]
+        :type list2: List[str]
+        :rtype: List[str]
+        """
+        output = []
+        index_list = []
+        common_list = list(set(list1)&set(list2))
+        for restaurant in common_list:
+            index_list.append(list1.index(restaurant)+list2.index(restaurant))
+        if list1 == list2:
+            return [list1[0]]
+        elif len(common_list) == len(list2) and len(common_list) == len(list1):
+            return list2
+        elif index_list.count(min(index_list)) > 1:
+            for i in xrange(len(index_list)):
+                if index_list[i] == min(index_list):
+                    output.append(common_list[i])
+            return output
+        else:
+            return [common_list[index_list.index(min(index_list))]]
